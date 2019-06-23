@@ -1,3 +1,7 @@
+//Kirk Preston
+//06/23/19
+//Programming Fundamentals 1
+
 #include <iostream>
 #include <cstdlib>
 #include <iomanip>
@@ -16,19 +20,21 @@ int getGrades(int grades[GRADE_NUMBER], string assignmentName[NUM_ASSIGNMENT]);
 double getAverage(int grades[GRADE_NUMBER], const int NUM_ASSIGNMENT, double gradeAverage);
 void displayAverage(double getAverage(), string getStudentName());
 
-
+//starts the program
 int main() {
 
-    double gradeAverage;   //this code block defines all of the variables that will be used throughout the program
+    //this code block defines all of the variables that will be used throughout the program
+    double gradeAverage;
     string studentName;
     string assignmentName[NUM_ASSIGNMENT];
     int grades[GRADE_NUMBER];
 
+    //function calls that call the function definitions below main that carry out their respective instructions
     getStudentName(studentName);
     getAssignment(assignmentName);
     getGrades(grades, assignmentName);
     getAverage(grades, NUM_ASSIGNMENT, gradeAverage);
-    //displayAverage(getAverage(grades, NUM_ASSIGNMENT, gradeAverage), getStudentName(studentName));
+    displayAverage(getAverage(grades, NUM_ASSIGNMENT, gradeAverage), getStudentName(studentName));
 
     //program specifications call for the variables to be put in array so the following code will be prototype code
     //string studentName[2] = {firstName, lastName};
@@ -96,7 +102,7 @@ int main() {
 }
 
 //Function definition for getStudentName
-//takes in a string of the students name, returns that students name, that's the purpose of this funtion
+//takes in a string of the students name, returns that students name, that's the purpose of this function
 string getStudentName (string studentName){
     cout << "What is your first and last name: ";
     getline(cin, studentName);
@@ -105,7 +111,7 @@ string getStudentName (string studentName){
     //one line code to get the entire line: getline(cin, studentName);
 }
 
-//Function definition for getting the assignmennt names
+//Function definition for getting the assignment names
 //the purpose of this function is to return all assignment names from the assignment array
 //Array allows for an easier/efficient way to collect multiple assignment names
 string getAssignment(string assignmentName[NUM_ASSIGNMENT]){
@@ -123,7 +129,7 @@ string getAssignment(string assignmentName[NUM_ASSIGNMENT]){
     cout << endl << endl;
     return assignmentName[NUM_ASSIGNMENT];
 }
-//Funtion defintion for getting the assignment grades
+//Function definition for getting the assignment grades
 //the purpose of this function is to return all grades from the grades array
 //Array allows for an easier/efficient way to collect multiple integer grades
 int getGrades(int grades[GRADE_NUMBER], string assignmentName[NUM_ASSIGNMENT]){
