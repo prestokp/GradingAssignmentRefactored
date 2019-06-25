@@ -60,9 +60,8 @@ void getAssignment(string assignmentName[], int size){
 
     //Captures the name of the assignment via getline
     //names can have spaces in their strings which can affect the capture when using a regular cin method
-    cout << endl;
-    cout << "\n Enter the names of the " << size
-        << " items for the invoice\n";
+    cout << "\nEnter the names of the " << size
+        << " assignments to be graded.\n";
 
     cout << "Enter assignment name 1: ";
     getline(cin, assignmentName[0]);
@@ -84,7 +83,7 @@ void getAssignment(string assignmentName[], int size){
 void getGrades(int grades[], string assignmentName[], int size){
 
     cout << "\nNow enter the grades of the " << NUM_ASSIGNMENT
-        << "items\n";
+        << " assignments.\n";
 
     cout << "Enter grade for " << assignmentName[0]
          << " : ";                                      //These are the iostreams that prompt the user to enter their grades in
@@ -122,8 +121,8 @@ double getAverage(int grades[], int size){
 
 //This function definition displays the grade average, the grades, assignment, and student name
 
-void displayAverage(int grades[], string assignmentName[], string studentName, double gradeAverages, int size){
-    cout << "The average for " << getStudentName() << " " << "is " << fixed << showpoint << setprecision(1)
+void displayAverage(string studentName, string assignmentName[], int grades[], double gradeAverages, int size){
+    cout << "The average for " << studentName << " is " << fixed << showpoint << setprecision(1)
     << getAverage(grades, size)
          << endl;
 
