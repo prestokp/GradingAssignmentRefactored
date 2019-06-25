@@ -15,11 +15,11 @@ const int GRADE_NUMBER = 3;
 
 //Function prototypes, allows us to name them in any order and call them in any order
 
-string getStudentName ();
+string getStudentName();
 void getAssignment(string assignmentName[], int size);
-void getGrades(int grades[], string assignmentName[]);
-double getAverage(int grades[], double gradeAverage);
-void displayAverage(int grades[], string assignmentName[], studentName);
+void getGrades(int grades[], string assignmentName[], int size);
+double getAverage(int grades[], int size);
+void displayAverage(string studentName, string assignmentNames[], int grades[], double gradeAverage, int size);
 
 //starts the program
 int main() {
@@ -32,17 +32,19 @@ int main() {
 
     //function calls that call the function definitions below main that carry out their respective instructions
     studentName = getStudentName();
-    getAssignment(assignmentName, );
-    getGrades(grades, assignmentName);
-    getAverage(grades, gradeAverage);
-    displayAverage(grades, assignmentName);
+    getAssignment(assignmentName, NUM_ASSIGNMENT);
+    getGrades(grades, assignmentName, GRADE_NUMBER);
+    gradeAverage = getAverage(grades, NUM_ASSIGNMENT);
+    displayAverage(studentName, assignmentName, grades, gradeAverage, NUM_ASSIGNMENT);
 
     return 0;
 }
 
 //Function definition for getStudentName
 //takes in a string of the students name, returns that students name, that's the purpose of this function
-string getStudentName (string studentName){
+
+string getStudentName (){
+    string studentName;
     cout << "What is your first and last name: ";
     getline(cin, studentName);
     cout << endl;
@@ -54,10 +56,13 @@ string getStudentName (string studentName){
 //the purpose of this function is to return all assignment names from the assignment array
 //Array allows for an easier/efficient way to collect multiple assignment names
 
-void getAssignment(string assignmentName[NUM_ASSIGNMENT]){
+void getAssignment(string assignmentName[], int size){
 
     //Captures the name of the assignment via getline
     //names can have spaces in their strings which can affect the capture when using a regular cin method
+    cout << endl;
+    cout << "\n Enter the names of the " << size
+        << " items for the invoice\n";
 
     cout << "Enter assignment name 1: ";
     getline(cin, assignmentName[0]);
@@ -76,15 +81,18 @@ void getAssignment(string assignmentName[NUM_ASSIGNMENT]){
 //Array allows for an easier/efficient way to collect multiple integer grades
 
 
-void getGrades(int grades[], string assignmentName[]){
+void getGrades(int grades[], string assignmentName[], int size){
+
+    cout << "\nNow enter the grades of the " << NUM_ASSIGNMENT
+        << "items\n";
 
     cout << "Enter grade for " << assignmentName[0]
-         << " : ";                  //These are the iostreams that prompt the user to enter their grades in
-    cin >> grades[0];               //The grades must be entered in as integers, needs a more descriptive prompt
+         << " : ";                                      //These are the iostreams that prompt the user to enter their grades in
+    cin >> grades[0];                                   //The grades must be entered in as integers, needs a more descriptive prompt
 
     cout << "Enter grade for " << assignmentName[1]
-         << " : ";                  //grades is an array so simply changing the indices refers to a different
-                                    //integer
+         << " : ";                                      //grades is an array so simply changing the indices refers to a different
+                                                        //integer
     cin >> grades[1];
 
     cout << "Enter grade for " << assignmentName[2]
@@ -100,24 +108,23 @@ void getGrades(int grades[], string assignmentName[]){
 //integration of the constant into the expression allows for easier adjustments to the program to account for more grades
 
 
-double getAverage(int grades[], double gradeAverage){
+double getAverage(int grades[], int size){
 
-    gradeAverage = (grades[0] + static_cast<double>(grades[1]) + grades[2]) /
-                   static_cast<double>(NUM_ASSIGNMENT);
+    double gradeAverage;
+    gradeAverage =  (grades[0] + grades[1] + static_cast<double>(grades[2])) / size;
+    return gradeAverage;
 
     //Average expression, static type cast
     //as extra redundancy to ensure the data type gets converted to a double
     //Dividing by the global constant allows us to only have to change the variable value in one location
-
-    return gradeAverage;
 }
 
 
 //This function definition displays the grade average, the grades, assignment, and student name
 
-void displayAverage(int grades[], string assignmentName[]){
-    cout << "The average for " << getStudentName(studentName) << " " << "is " << fixed << showpoint << setprecision(1)
-    << getAverage(grades, gradeAverage)
+void displayAverage(int grades[], string assignmentName[], string studentName, double gradeAverages, int size){
+    cout << "The average for " << getStudentName() << " " << "is " << fixed << showpoint << setprecision(1)
+    << getAverage(grades, size)
          << endl;
 
     //when array solution is implemented the output variable will
