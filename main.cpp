@@ -142,3 +142,5 @@ void displayAverage(string studentName, string assignmentName[], int grades[], d
     cout << endl << endl;
     cout << "Thank you for playing. ";
 }
+
+//Github Push Test
